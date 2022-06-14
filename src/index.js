@@ -1,26 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./components/redux/flipAction";
 class Room extends React.Component {
-  state = {
-    isLightOn: true
-  };
-
-  flipLight = () => {
-    this.setState({
-      isLightOn: !this.state.isLightOn
-    });
-  };
-
   render() {
-    const lightedness = this.state.isLightOn ? "lit" : "dark";
     return (
-      <div className={`room ${lightedness}`}>
-        the room is {lightedness}
-        <br />
-        <button onClick={this.flipLight}>flip</button>
-      </div>
+      <Provider store={store}>
+        <App />
+      </Provider>
     );
   }
 }
